@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var secretVariables = require("dotenv").config()
 
 console.log("Hello World")
 
@@ -12,7 +13,11 @@ app.get("/", function (req, res) {
 })
 
 app.get("/json", function (req, res) {
-    res.json({"message": "Hello json"})
+    var message = "Hello json"
+    if (process.env.MESSAGE_STYLE = "uppercase") {
+        message.toUpperCase()
+    }
+   res.json({ "message": message })
 })
 
 
