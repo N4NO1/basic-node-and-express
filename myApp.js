@@ -2,7 +2,9 @@ var express = require('express');
 var app = express();
 //require('dotenv').config()
 console.log("Hello World")
-console.log(process.env.MESSAGE_STYLE)
+console.log(process.env.MESSAGE_STYLE.toString)
+
+
 
 app.use("/public", express.static(__dirname + "/public"))
 
