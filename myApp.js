@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-/require('dotenv').config()
+//require('dotenv').config()
 console.log("Hello World")
 
 app.use("/public", express.static(__dirname + "/public"))
