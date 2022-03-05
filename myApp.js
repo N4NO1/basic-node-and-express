@@ -6,14 +6,15 @@ console.log("Hello World")
 
 app.use("/public", express.static(__dirname + "/public"))
 
+app.use(bodyParser.urlencoded({ extended: false }))
+
 app.use("/", function (req, res, next) {
     console.log(req.method + " " + req.path + " - " + req.ip)
-    bodyParser.urlencoded({extended: false})
     next()
 })
 
 
-app.get("/", function (req, res) {
+app.get("/", function (req, res) {co
     absolutePath = __dirname + "/views/index.html"
     res.sendFile(absolutePath)
 })
