@@ -3,7 +3,6 @@ var express = require('express');
 var app = express();
 require('dotenv').config()
 console.log("Hello World")
-bodyParser = require('body-parser')
 
 app.use("/public", express.static(__dirname + "/public"))
 
