@@ -1,12 +1,18 @@
+const bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
-var bodyParser = require('body-parser')
-
-
+require('dotenv').config()
 console.log("Hello World")
 
 app.use("/public", express.static(__dirname + "/public"))
 app.use(bodyParser.urlencoded({extended: false}))
+
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use("/", function (req, res, next) {
+    console.log(req.method + " " + req.path + " - " + req.ip)
+    next()
+})
 
 
 app.get("/", function (req, res) {
@@ -15,7 +21,13 @@ app.get("/", function (req, res) {
 })
 
 app.get("/json", function (req, res) {
-    res.json({"message": "Hello json"})
+
+    var message = "Hello json"
+    
+    if (process.env.MESSAGE_STYLE == "uppercase") {
+        message = message.toUpperCase()
+    }
+    return res.json({ "message": message })
 })
 
 
